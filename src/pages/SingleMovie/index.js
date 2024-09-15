@@ -1,5 +1,16 @@
+import classNames from "classnames/bind";
+
+import OptionHeading from "~/layouts/components/OptionHeading";
+import styles from './SingleMovie.module.scss'
+
+const cx = classNames.bind(styles)
+
 function SingleMovie() {
-    return <h2>Phim lẻ</h2>
+    return(
+    <div className={cx('wrapper')}>
+        <OptionHeading/>
+    </div>
+    )
 }
 
 export default SingleMovie;

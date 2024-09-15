@@ -1,0 +1,39 @@
+.wrapper {
+    padding-top: 38px;
+}
+
+.header-title {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-right: 56px;
+}
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.header-tag {
+    color: var(--white-color);
+    font-size: 1.4rem;
+    background-color: #504d49;
+    padding: 4px 8px;
+    margin-right: 8px;
+    border-radius: 2px;
+    text-decoration: none;
+}
+
+.header-viewall {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
