@@ -1,5 +1,6 @@
 const routes = {
     home: '/',
+    infor: '/infor/:slug',
     singlemovie: '/phim-le',
     seriesmovie: '/phim-bo',
     genremovie: '/genre/:phim-hanh-dong',

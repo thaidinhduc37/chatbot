@@ -9,7 +9,6 @@ const cx = classNames.bind(styles);
 
 function ContentItem({ data }) {
 
-    console.log('data', data);
     let srcImage;
     if(data.thumb_url.includes("https://phimimg.com/")){
         srcImage = data.thumb_url
@@ -18,7 +17,7 @@ function ContentItem({ data }) {
     }
 
     return (
-        <Link to={`/info/${data.slug}`} className={cx('wrapper')}>
+        <Link to={`/infor/${data.slug}`} className={cx('wrapper')}>
             <Image className={cx('content-img')} src={srcImage}></Image>
             <div className={cx('content-label')}>Hoàn Tất (Vietsub)</div>
             <div className={cx('content-name')}>{data.name}</div>

@@ -1,6 +1,7 @@
 import config from '~/config';
 //Page
 import Home from '~/pages/Home';
+import Infor from '~/pages/Infor';
 import SingleMovie from '~/pages/SingleMovie';
 import SeriesMovie from '~/pages/SeriesMovie';
 import GenreMovie from '~/pages/GenreMovie';
@@ -12,6 +13,7 @@ import Trailer from '~/pages/Trailer';
 // Public Route
 const publicRoutes = [
     { path: config.routes.home, component: Home },
+    { path: config.routes.infor, component: Infor },
     { path: config.routes.singlemovie, component: SingleMovie },
     { path: config.routes.seriesmovie, component: SeriesMovie },
     { path: config.routes.genremovie, component: GenreMovie },
