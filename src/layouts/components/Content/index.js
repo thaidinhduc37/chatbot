@@ -10,7 +10,7 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function Content({api, tags, sliderTitle, blockTitle, itemCount = 5 }) {
+function Content({api, tags, sliderTitle, blockTitle, itemCount = 5, className }) {
     const [data, setData] = useState([]); // State để lưu dữ liệu từ API
     const [loading, setLoading] = useState(true); // Trạng thái loading
     const [error, setError] = useState(null); // Trạng thái lỗi nếu có
@@ -75,7 +75,7 @@ function Content({api, tags, sliderTitle, blockTitle, itemCount = 5 }) {
             )}
             <div className={cx('content')}>
                 {visibleData.map((item, index) => (
-                    <ContentItem key={index} data={item} /> // Render ContentItem với dữ liệu từ API
+                    <ContentItem key={index} data={item}/> // Render ContentItem với dữ liệu từ API
                 ))}
             </div>
         </div>

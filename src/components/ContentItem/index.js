@@ -7,17 +7,35 @@ import Image from '../Image';
 
 const cx = classNames.bind(styles);
 
-function ContentItem({ data }) {
-
+function ContentItem({
+    data,
+    outline = false,
+    text = false,
+    rounded = false,
+    small = false,
+    large = false,
+    disabled = false,
+    className,
+}) {
     let srcImage;
-    if(data.thumb_url.includes("https://phimimg.com/")){
-        srcImage = data.thumb_url
-    } else{
-        srcImage = `https://phimimg.com/${data.thumb_url}`
+    if (data.thumb_url.includes('https://phimimg.com/')) {
+        srcImage = data.thumb_url;
+    } else {
+        srcImage = `https://phimimg.com/${data.thumb_url}`;
     }
 
+    const classes = cx('wrapper', {
+        [className]: className,
+        outline,
+        text,
+        disabled,
+        rounded,
+        small,
+        large,
+    });
+
     return (
-        <Link to={`/infor/${data.slug}`} className={cx('wrapper')}>
+        <Link to={`/infor/${data.slug}`} className={classes}>
             <Image className={cx('content-img')} src={srcImage}></Image>
             <div className={cx('content-label')}>Hoàn Tất (Vietsub)</div>
             <div className={cx('content-name')}>{data.name}</div>

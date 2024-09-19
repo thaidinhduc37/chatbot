@@ -2,25 +2,21 @@ import config from '~/config';
 //Page
 import Home from '~/pages/Home';
 import Infor from '~/pages/Infor';
-import SingleMovie from '~/pages/SingleMovie';
-import SeriesMovie from '~/pages/SeriesMovie';
-import GenreMovie from '~/pages/GenreMovie';
-import CountryMovie from '~/pages/CountryMovie';
-import YearOfRelease from '~/pages/YearOfRelease';
-import TheaterMovie from '~/pages/TheaterMovie';
-import Trailer from '~/pages/Trailer';
+import Watch from '~/pages/Watch';
+import MovieLayout from '~/pages/MovieLayout';
 
 // Public Route
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.infor, component: Infor },
-    { path: config.routes.singlemovie, component: SingleMovie },
-    { path: config.routes.seriesmovie, component: SeriesMovie },
-    { path: config.routes.genremovie, component: GenreMovie },
-    { path: config.routes.countrymovie, component: CountryMovie },
-    { path: config.routes.yearofrelease, component: YearOfRelease },
-    { path: config.routes.theatermovie, component: TheaterMovie },
-    { path: config.routes.trailer, component: Trailer },
+    { path: config.routes.watch, component: Watch },
+    { path: config.routes.singlemovie, component: () => <MovieLayout title="Phim Lẻ" /> },
+    { path: config.routes.seriesmovie, component: () => <MovieLayout title="Phim Bộ" /> },
+    { path: config.routes.genremovie, component: () => <MovieLayout title="Thể Loại Phim" /> },
+    { path: config.routes.countrymovie, component: () => <MovieLayout title="Quốc Gia phát hành" /> },
+    { path: config.routes.yearofrelease, component: () => <MovieLayout title="Năm Phát Hành" /> },
+    { path: config.routes.theatermovie, component: () => <MovieLayout title="Phim Chiếu Rạp" /> },
+    { path: config.routes.trailer, component: () => <MovieLayout title="Phim Sắp Chiếu" /> },
 ];
 
 const privateRoutes = [];

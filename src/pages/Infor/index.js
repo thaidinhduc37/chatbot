@@ -148,7 +148,6 @@ function Infor() {
                     </div>
                     <div className={cx('comment')}></div>
                     <Content
-                        className={cx('film-related')}
                         api={'danh-sach/phim-moi-cap-nhat'}
                         sliderTitle={'CÓ THỂ BẠN CŨNG MUỐN XEM'}
                     />

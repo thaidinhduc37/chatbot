@@ -1,6 +1,7 @@
 import routes from "./routes";
+import titles from "./titles";
 const config = {
-  routes,
+  routes, titles
 };
 
 export default config;
