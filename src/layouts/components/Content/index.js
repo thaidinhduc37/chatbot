@@ -10,19 +10,17 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function Content({api, tags, sliderTitle, blockTitle, itemCount = 5, className }) {
+function Content({ api, tags, sliderTitle, blockTitle, page = 1, className }) {
     const [data, setData] = useState([]); // State để lưu dữ liệu từ API
     const [loading, setLoading] = useState(true); // Trạng thái loading
     const [error, setError] = useState(null); // Trạng thái lỗi nếu có
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(
-                    `https://phimapi.com/${api}?page=1&limit=${itemCount}`
-                );
+                const response = await axios.get( api );
 
                 let items;
-                if(api.includes("v1")){
+                if (api.includes('v1')) {
                     items = response.data?.data?.items;
                 } else {
                     items = response.data?.items;
@@ -53,7 +51,7 @@ function Content({api, tags, sliderTitle, blockTitle, itemCount = 5, className }
     if (error) {
         return <div>Có lỗi xảy ra: {error}</div>; // Hiển thị lỗi nếu có
     }
-    const visibleData = data.slice(0, itemCount);
+    const visibleData = data.slice(0, 5);
 
     return (
         <div className={cx('wrapper')}>
@@ -75,7 +73,7 @@ function Content({api, tags, sliderTitle, blockTitle, itemCount = 5, className }
             )}
             <div className={cx('content')}>
                 {visibleData.map((item, index) => (
-                    <ContentItem key={index} data={item}/> // Render ContentItem với dữ liệu từ API
+                    <ContentItem key={index} data={item} className={className} /> // Render ContentItem với dữ liệu từ API
                 ))}
             </div>
         </div>

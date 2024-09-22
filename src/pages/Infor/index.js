@@ -4,17 +4,22 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+import EpisodesList from '~/components/EpisodesList';
+import Button from '~/components/Button';
 import Content from '~/layouts/components/Content';
 import styles from './Infor.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight, faHouseChimney, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import Image from '~/components/Image';
+import Social from '~/components/Social';
+import Breadcrumb from '~/components/Breadcrumb';
 
 const cx = classNames.bind(styles);
 function Infor() {
     const { slug } = useParams();
     const [data, setData] = useState([]); // State để lưu dữ liệu từ API
+    const [episodes, setEpisodes] = useState([]); // State để lưu tập phim
     const [loading, setLoading] = useState(true); // Trạng thái loading
     const [error, setError] = useState(null); // Trạng thái lỗi nếu có
     useEffect(() => {
@@ -28,8 +33,15 @@ function Infor() {
 
                 if (response.data) {
                     setData(response.data.movie); // Nếu items là mảng, lưu vào state
+                    const serverData = response.data.episodes[0]?.server_data;
+                    if (Array.isArray(serverData)) {
+                        setEpisodes(serverData); // Gán server_data nếu là mảng
+                    } else {
+                        setEpisodes([]); // Nếu không có server_data, đặt mảng rỗng
+                    }
                 } else {
                     setData([]); // Nếu không, lưu mảng rỗng
+                    setEpisodes([]);
                 }
             } catch (error) {
                 setError(error.message); // Lưu thông báo lỗi nếu có
@@ -40,10 +52,9 @@ function Infor() {
 
         fetchData(); // Gọi hàm fetchData
     }, [slug]); // useEffect chỉ chạy một lần khi component mount
-
     const categories = data.category || [];
     const countries = data.country;
-    const episodes = data.episodes || [];
+
     const actors = data.actor;
 
     if (loading) {
@@ -56,33 +67,7 @@ function Infor() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container')}>
-                <ul className={cx('breadcrumb')} itemscope="" itemtype="https://schema.org/BreadcrumbList">
-                    <li itemprop={cx('itemListElement')} itemscope="" itemtype="https://schema.org/ListItem">
-                        <a itemprop="item" href="/" title="Xem phim">
-                            <span itemprop="name">
-                                <FontAwesomeIcon className={cx('fa')} icon={faHouseChimney} /> Xem phim
-                                <FontAwesomeIcon className={cx('fa')} icon={faAngleRight} />
-                            </span>
-                        </a>
-                        <meta itemprop="position" content="1" />
-                    </li>
-                    {categories.length > 0 && (
-                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                            <a
-                                itemprop="item"
-                                href={`https://phimmoichill2.net/genre/${categories[0].slug}`}
-                                title={categories[0].name}
-                            >
-                                <span itemprop="name">
-                                    {categories[0].name}
-                                    <FontAwesomeIcon icon={faAngleRight} />
-                                </span>
-                            </a>
-                            <meta itemprop="position" content="2" />
-                        </li>
-                    )}
-                    <li> {data.name} </li>
-                </ul>
+                <Breadcrumb data={data} />
                 <div className={cx('film-infor')}>
                     <div
                         className={cx('image')}
@@ -95,27 +80,27 @@ function Infor() {
                             <h2>{data.origin_name}</h2>
                             <ul className={cx('list-button')}>
                                 <li>
-                                    <Link
-                                        to={`/watch/${data.trailer_url}`}
+                                    <Button
                                         className={cx('link', 'btn', 'btn-infor')}
-                                    ></Link>
-                                    <FontAwesomeIcon icon={faYoutube} className={cx('fa')} />
-                                    Trailer
+                                        to={`/watch/${data.trailer_url}`}
+                                        leftIcon={<FontAwesomeIcon icon={faYoutube} className={cx('fa')} />}
+                                        title={'Trailer'}
+                                    />
                                 </li>
                                 <li>
-                                    <Link
-                                        to={`/watch/${data.episodes}`}
+                                    <Button
                                         className={cx('link', 'btn', 'btn-danger')}
-                                    ></Link>
-                                    <FontAwesomeIcon icon={faPlayCircle} className={cx('fa')} />
-                                    Xem phim
+                                        to={`/watch/${data.slug}`}
+                                        leftIcon={<FontAwesomeIcon icon={faPlayCircle} className={cx('fa')} />}
+                                        title={'Xem phim'}
+                                    />
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div className={cx('episodes')}></div>
-                    <div className={cx('text')}>
-                        <div className={cx('social')}></div>
+                    <EpisodesList data={episodes} slug={slug} />
+                    <div className={cx('social')}>
+                        <Social />
                         <ul className={cx('entry-meta', 'block film')}>
                             <li>
                                 <label>Đang phát: </label>
@@ -148,10 +133,15 @@ function Infor() {
                     </div>
                     <div className={cx('comment')}></div>
                     <Content
-                        api={'danh-sach/phim-moi-cap-nhat'}
+                        className={'small'}
+                        api={'https://phimapi.com/v1/api/tim-kiem?keyword=hay&limit=5'}
                         sliderTitle={'CÓ THỂ BẠN CŨNG MUỐN XEM'}
                     />
-                    <Content api={'v1/api/danh-sach/phim-le'} sliderTitle={'PHIM ĐỀ CỬ MỚI'} />
+                    <Content
+                        className={'small'}
+                        api={'https://phimapi.com/v1/api/tim-kiem?keyword=new&limit=5'}
+                        sliderTitle={'PHIM ĐỀ CỬ MỚI'}
+                    />
                 </div>
             </div>
         </div>

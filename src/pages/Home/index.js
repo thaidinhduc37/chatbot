@@ -8,9 +8,13 @@ const cx = classNames.bind(styles);
 function Home() {
     return (
         <div className={cx('wrapper')}>
-            <Content api={'danh-sach/phim-moi-cap-nhat'} sliderTitle={'PHIM ĐỀ CỬ'} />
             <Content
-                api={'v1/api/danh-sach/phim-le'}
+                api={'https://phimapi.com/v1/api/tim-kiem?keyword=hay&limit=5'}
+                sliderTitle={'PHIM ĐỀ CỬ'}
+            />
+            <Content
+                api={'https://phimapi.com/v1/api/danh-sach/phim-le?page=1&limit=5'}
+                page={2}
                 blockTitle={'PHIM LẺ MỚI CẬP NHẬT'}
                 tags={[
                     {
@@ -32,8 +36,9 @@ function Home() {
                 ]}
             />
             <Content
-                api={'v1/api/danh-sach/phim-le'}
+                api={'https://phimapi.com/v1/api/danh-sach/phim-le?page=1&limit=5'}
                 blockTitle={'PHIM CHIẾU RẠP MỚI'}
+                page={1}
                 tags={[
                     {
                         title: '2023',
@@ -55,7 +60,7 @@ function Home() {
             />
 
             <Content
-                api={'v1/api/danh-sach/phim-bo'}
+                api={'https://phimapi.com/v1/api/danh-sach/phim-bo?page=1&limit=5'}
                 blockTitle={'PHIM BỘ MỚI CẬP NHẬT'}
                 tags={[
                     {
@@ -78,7 +83,7 @@ function Home() {
             />
 
             <Content
-                api={'danh-sach/phim-moi-cap-nhat'}
+                api={'https://phimapi.com/v1/api/tim-kiem?keyword=hot&limit=5'}
                 page={2}
                 blockTitle={'PHIM THỊNH HÀNH'}
                 tags={[
@@ -93,7 +98,10 @@ function Home() {
                 ]}
             />
 
-            <Content api={'v1/api/danh-sach/tv-shows'} blockTitle={'PHIM MỚI SẮP CHIẾU'} />
+            <Content
+                api={'https://phimapi.com/v1/api/tim-kiem?keyword=new&limit=5'}
+                blockTitle={'PHIM MỚI SẮP CHIẾU'}
+            />
         </div>
     );
 }

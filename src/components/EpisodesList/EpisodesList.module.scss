@@ -1,0 +1,25 @@
+.episodes {
+    background: #282828;
+    overflow: hidden;
+    padding: 5px;
+    margin: 10px 0 0;
+
+    & > span {
+        float: left;
+        margin: 10px;
+    }
+}
+.episodes-item {
+    float: left;
+    margin: 5px;
+    padding: 7px;
+    background: #3a3a3a;
+    color: #fdfdfd;
+    border-radius: 3px;
+    font-size: 13px;
+    min-width: 0px;
+
+    &:hover{
+        background: var(--primary-color);
+    }
+}

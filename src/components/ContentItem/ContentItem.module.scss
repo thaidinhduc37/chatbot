@@ -83,8 +83,6 @@
     animation: zoomIn ease 0.3s forwards;
 }
 
-
-
 @keyframes zoomOut {
     from {
         opacity: 0;
@@ -126,6 +124,66 @@
     top: 69.5px;
     left: 125.5px;
     display: none;
-
 }
 
+.small {
+    &.wrapper {
+        width: 160px;
+        height: 100px;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        box-shadow: 0 0 1px var(--white-color);
+        margin-bottom: 17px;
+    }
+    &.content-img {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 4px;
+        position: relative;
+        transition: transform 0.2s;
+    }
+
+    & .content-label {
+        position: absolute;
+        font-size: 0.9rem;
+        padding: 2px 4px;
+        border-radius: 1px;
+    }
+
+    &.content-label::before {
+        border-width: 4px 4px;
+        bottom: -7px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &.content-name {
+        width: 160px;
+        font-size: 1.3rem;
+        padding: 2px 2px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+
+    &.content-circel {
+        position: absolute;
+        width: 31px;
+        height: 31px;
+        background-color: rgba(255, 138, 0, 0.8);
+        top: 35px;
+        left: 62px;
+        border-radius: 50%;
+        display: none;
+    }
+    &.content-play {
+        border-width: 9px 9px;
+        top: 42px;
+        left: 75px;
+        display: none;
+        position: absolute;
+    }
+}
