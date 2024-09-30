@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import Content from '~/layouts/components/Content';
+import MovieContainer from '~/layouts/components/MovieContainer';
 
 import styles from './Home.module.scss';
 
@@ -8,13 +8,14 @@ const cx = classNames.bind(styles);
 function Home() {
     return (
         <div className={cx('wrapper')}>
-            <Content
-                api={'https://phimapi.com/v1/api/tim-kiem?keyword=hay&limit=5'}
+            <MovieContainer
+                apis={['https://phimapi.com/v1/api/danh-sach/phim-le', 'https://phimapi.com/v1/api/danh-sach/phim-bo']}
                 sliderTitle={'PHIM ĐỀ CỬ'}
+                displayType={'slider'}
             />
-            <Content
-                api={'https://phimapi.com/v1/api/danh-sach/phim-le?page=1&limit=5'}
-                page={2}
+            <MovieContainer
+                apis={['https://phimapi.com/v1/api/danh-sach/phim-le']}
+                displayType={'featured'}
                 blockTitle={'PHIM LẺ MỚI CẬP NHẬT'}
                 tags={[
                     {
@@ -35,10 +36,10 @@ function Home() {
                     },
                 ]}
             />
-            <Content
-                api={'https://phimapi.com/v1/api/danh-sach/phim-le?page=1&limit=5'}
+            <MovieContainer
+                apis={['https://phimapi.com/v1/api/danh-sach/phim-le', 'https://phimapi.com/v1/api/danh-sach/phim-bo']}
                 blockTitle={'PHIM CHIẾU RẠP MỚI'}
-                page={1}
+                displayType={'featured'}
                 tags={[
                     {
                         title: '2023',
@@ -59,9 +60,10 @@ function Home() {
                 ]}
             />
 
-            <Content
-                api={'https://phimapi.com/v1/api/danh-sach/phim-bo?page=1&limit=5'}
+            <MovieContainer
+                apis={['https://phimapi.com/v1/api/danh-sach/phim-bo']}
                 blockTitle={'PHIM BỘ MỚI CẬP NHẬT'}
+                displayType={'featured'}
                 tags={[
                     {
                         title: 'Hàn Quốc',
@@ -82,9 +84,9 @@ function Home() {
                 ]}
             />
 
-            <Content
-                api={'https://phimapi.com/v1/api/tim-kiem?keyword=hot&limit=5'}
-                page={2}
+            <MovieContainer
+                apis={['https://phimapi.com/v1/api/danh-sach/phim-le', 'https://phimapi.com/v1/api/danh-sach/phim-bo']}
+                displayType={'trending'}
                 blockTitle={'PHIM THỊNH HÀNH'}
                 tags={[
                     {
@@ -98,8 +100,9 @@ function Home() {
                 ]}
             />
 
-            <Content
-                api={'https://phimapi.com/v1/api/tim-kiem?keyword=new&limit=5'}
+            <MovieContainer
+                apis={['https://phimapi.com/v1/api/danh-sach/phim-le', 'https://phimapi.com/v1/api/danh-sach/phim-bo']}
+                displayType={'ten'}
                 blockTitle={'PHIM MỚI SẮP CHIẾU'}
             />
         </div>

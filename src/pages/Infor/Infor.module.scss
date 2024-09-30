@@ -4,10 +4,9 @@
 .container {
     margin: 0 auto;
     width: auto;
-    padding: 0 60px;
+    padding: 0;
     max-width: 980px;
 }
-
 
 .fa {
     display: inline-block;
@@ -139,17 +138,133 @@
     }
 }
 
-
-
-.social {
+.infor-text {
     background: #252525;
     padding: 10px;
     margin: 10px 0 0;
-}
-
-.social {
     margin: 10px 0;
     overflow: hidden;
 }
 
+.block-film {
+    margin: 10px 0 0;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #3a3a3a;
+}
 
+.entry-meta li {
+    color: #828282;
+    width: 30%;
+    float: left;
+    margin: 0 3% 0 0;
+    padding: 3px 0;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.entry-meta li label {
+    color: #fff;
+    font-size: 13px;
+}
+
+.entry-meta-red {
+    font-weight: 700;
+    color: red;
+}
+
+.entry-meta-item {
+    margin-left: 2px;
+    color: #828282;
+
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+.imdb {
+    color: #000;
+    padding: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    background: #e3b71e;
+    border-radius: 3px;
+
+    &:hover {
+        color: #000;
+    }
+}
+
+.block-note {
+    margin: 10px 0 0;
+    border: 1px solid #ff9601;
+    background: #000;
+    padding: 10px;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.heading-title {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: var(--primary-color);
+}
+.content-film {
+    color: #828282;
+    max-height: 500px;
+
+    & b {
+        margin-right: 5px;
+    }
+}
+
+.tags-list {
+    overflow: hidden;
+    line-height: 1.5em;
+    overflow-y: auto;
+}
+
+.tag-item {
+    float: left;
+    margin: 0 0.8em 0.8em 0;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+    background: #353535;
+    font-size: 1.4rem;
+    border-radius: 2px;
+    font-weight: 500;
+    padding: 2px 4px;
+    color: #828282;
+    min-width: 0;
+
+    &:hover {
+        background: var(--primary-color);
+        color: var(--white-color);
+    }
+}
+
+.comment {
+    background: #fff;
+    padding: 5px;
+    margin: 20px 0 0;
+    border-radius: 3px;
+
+    & h3 {
+        font-weight: 700;
+        font-size: 1.5em;
+        color: var(--primary-color);
+    }
+}
+
+.film-related {
+    margin: 20px 0 0;
+    padding: 10px 0 0;
+    border-top: 1px solid #4c4c4c;
+}

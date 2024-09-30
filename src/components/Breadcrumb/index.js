@@ -7,9 +7,9 @@ import styles from './Breadcrumb.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Breadcrumb({ data }) {
-    const categories = data.category || [];
-    const type = data.type || '';
+function Breadcrumb({ data, title }) {
+    const categories = data ? data.category : [];
+    const type = data ? data.type : '';
     let typeGenre = [];
     switch (type) {
         case 'hoathinh':
@@ -24,11 +24,14 @@ function Breadcrumb({ data }) {
         case 'tvshows':
             typeGenre = ['tv-shows', 'TV Show'];
             break;
+        default:
+            typeGenre = ['', ''];
+            break;
     }
 
-    return (
-        <ul className={cx('breadcrumb')} itemscope="" itemtype="https://schema.org/BreadcrumbList">
-            <li itemprop={cx('itemListElement')} itemscope="" itemtype="https://schema.org/ListItem">
+    return data ? (
+        <ul className={cx('breadcrumb')} itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                 <a itemprop="item" href="/" title="Xem phim">
                     <span itemprop="name">
                         <FontAwesomeIcon className={cx('fa')} icon={faHouseChimney} /> Xem phim
@@ -37,7 +40,7 @@ function Breadcrumb({ data }) {
                 </a>
                 <meta itemprop="position" content="1" />
             </li>
-            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                 <a itemprop="item" href={`https://phimmoichill2.net/genre/${typeGenre[0]}`} title={typeGenre[1]}>
                     <span itemprop="name">
                         {typeGenre[1]}
@@ -47,7 +50,7 @@ function Breadcrumb({ data }) {
                 <meta itemprop="position" content="2" />
             </li>
             {categories.length > 0 && (
-                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <a
                         itemprop="item"
                         href={`https://phimmoichill2.net/genre/${categories[0].slug}`}
@@ -58,10 +61,26 @@ function Breadcrumb({ data }) {
                             <FontAwesomeIcon className={cx('fa')} icon={faAngleRight} />
                         </span>
                     </a>
-                    <meta itemprop="position" content="2" />
+                    <meta itemprop="position" content="3" />
                 </li>
             )}
-            <li>{data.name} </li>
+            <li>{data.name}</li>
+        </ul>
+    ) : (
+        <ul className={cx('breadcrumb')} itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="/" title="Phim mới">
+                    <span itemprop="name">
+                        <FontAwesomeIcon className={cx('fa')} icon={faHouseChimney} /> Phim Mới
+                        <FontAwesomeIcon className={cx('fa')} icon={faAngleRight} />
+                    </span>
+                </a>
+                <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <h3 itemprop="name" className={cx('no-data')}>{title}</h3>
+                <meta itemprop="position" content="2" />
+            </li>
         </ul>
     );
 }

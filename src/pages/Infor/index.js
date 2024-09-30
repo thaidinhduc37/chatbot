@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import EpisodesList from '~/components/EpisodesList';
 import Button from '~/components/Button';
-import Content from '~/layouts/components/Content';
+import MovieContainer from '~/layouts/components/MovieContainer';
 import styles from './Infor.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
@@ -98,50 +98,107 @@ function Infor() {
                             </ul>
                         </div>
                     </div>
-                    <EpisodesList data={episodes} slug={slug} />
-                    <div className={cx('social')}>
+                    <EpisodesList title={'Tập mới nhất:'} data={episodes} slug={slug} />
+                    <div className={cx('infor-text')}>
                         <Social />
                         <ul className={cx('entry-meta', 'block film')}>
                             <li>
                                 <label>Đang phát: </label>
-                                <span>Full HD</span>
+                                <span className={cx('entry-meta-red')}>{data.episode_current}</span>
                             </li>
                             <li>
                                 <label>Năm phát hành: </label>
-                                <Link to={`/list/phim-nam-${data.year}`}>{`Năm ${data.year}`}</Link>
+                                <Link
+                                    className={cx('entry-meta-item')}
+                                    to={`/list/phim-nam-${data.year}`}
+                                >{`Năm ${data.year}`}</Link>
                             </li>
                             <li>
                                 <label>Quốc gia: </label>
-                                <Link to={`/country/phim-${countries[0].slug}`}>{`Phim ${countries[0].name}`}</Link>
+                                <Link
+                                    className={cx('entry-meta-item')}
+                                    to={`/country/phim-${countries[0].slug}`}
+                                >{`Phim ${countries[0].name}`}</Link>
                             </li>
                             <li>
                                 <label>Thể loại: </label>
-                                <Link to={`/genre/phim-${categories[0].slug}`}>{`Phim ${categories[0].name}`}</Link>
+                                <Link
+                                    className={cx('entry-meta-item')}
+                                    to={`/genre/phim-${categories[0].slug}`}
+                                >{`Phim ${categories[0].name}`}</Link>
                             </li>
                             <li>
                                 <label>Đạo diễn: </label>
-                                <Link to={'/dao-dien'}>{data.director}</Link>
+                                <Link className={cx('entry-meta-item')} to={'/dao-dien'}>
+                                    {data.director}
+                                </Link>
+                            </li>
+                            <li>
+                                <label>Điểm IMDb: </label>
+                                <span className={cx('entry-meta-item', 'imdb')}>8.4</span>
+                            </li>
+                            <li>
+                                <label>Rottentomatoes: </label>
+                                <span className={cx('entry-meta-item', 'imdb')}>69% Tomatometer</span>
                             </li>
                             <li>
                                 <label>Thời lượng: </label>
-                                <span>{`${data.episode_total} tập`}</span>
+                                <span className={cx('entry-meta-item')}>{`${data.episode_total} tập`}</span>
+                            </li>
+                            <li>
+                                <label>Diễn viên: </label>
+                                {actors.map((act, i) => (
+                                    <Link className={cx('entry-meta-item')} to={'/dao-dien'}>{`${act}, `}</Link>
+                                ))}
                             </li>
                         </ul>
-                        <div className={cx('content')}></div>
+                        <div className={cx('clear')}></div>
+                        <div className={cx('block-note')}>
+                            <h4 className={cx('hidden')}>Lịch chiếu/ghi chú</h4>
+                            <p>1 tập chủ nhật hàng tuần trên phimmoi</p>
+                        </div>
+                        <div className={cx('content', 'block-film')}>
+                            <h3 className={cx('heading-title')}>Nội dung phim</h3>
+                            <div className={cx('content-film')}>
+                                <b>{data.name}</b>
+                                {data.content}
+                            </div>
+                        </div>
                         <div className={cx('block-film')}></div>
-                        <div className={cx('block-film')}></div>
+                        <div className={cx('block-film')}>
+                            <h3 className={cx('heading-title')}>Tags</h3>
+                            <div className={cx('tags-list')}>
+                                <Button className={cx('tag-item')} title={data.name} />
+                                <Button className={cx('tag-item')} title={data.origin_name} />
+                            </div>
+                        </div>
                     </div>
-                    <div className={cx('comment')}></div>
-                    <Content
+                    <div className={cx('comment')}>
+                        <h3>Khi nào có Bình luận sẽ thêm vào sau</h3>
+                    </div>
+                    <div className={cx('film-related')}>
+                        <MovieContainer
+                            className={'small'}
+                            apis={[
+                                'https://phimapi.com/v1/api/tim-kiem?keyword=hot&limit=5',
+                                'https://phimapi.com/v1/api/tim-kiem?keyword=new&limit=5',
+                            ]}
+                            displayType={'slider'}
+                            sliderTitle={'CÓ THỂ BẠN CŨNG MUỐN XEM'}
+                        />
+                    </div>
+                    <div className={cx('film-related')}>
+                    <MovieContainer
                         className={'small'}
-                        api={'https://phimapi.com/v1/api/tim-kiem?keyword=hay&limit=5'}
-                        sliderTitle={'CÓ THỂ BẠN CŨNG MUỐN XEM'}
-                    />
-                    <Content
-                        className={'small'}
-                        api={'https://phimapi.com/v1/api/tim-kiem?keyword=new&limit=5'}
+                        apis={[
+                            'https://phimapi.com/v1/api/tim-kiem?keyword=moi&limit=5',
+                            'https://phimapi.com/v1/api/tim-kiem?keyword=2024&limit=5',
+                        ]}
+                        displayType={'slider'}
                         sliderTitle={'PHIM ĐỀ CỬ MỚI'}
                     />
+                    </div>
+                    
                 </div>
             </div>
         </div>

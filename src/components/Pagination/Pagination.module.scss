@@ -1,0 +1,33 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.item {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.pagination-btn {
+    display: block;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+    border: 1px solid #4c4c4c;
+    background: #3a3a3a;
+    padding: 3px 5px;
+    font-weight: 700;
+    font-size: 13px;
+    min-width: 0px;
+}
+
+.active {
+    border-color: #ff6901;
+    color: #ff9601;
+}
+
+

@@ -1,3 +1,6 @@
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
 .wrapper {
     padding-top: 38px;
 }
@@ -36,4 +39,22 @@ h1 {
     display: flex;
     justify-content: space-between;
     position: relative;
+}
+
+
+.large-content {
+    margin-right: 17px;
+}
+
+.side-content {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.block_content-side {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }

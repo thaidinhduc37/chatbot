@@ -12,9 +12,9 @@ const publicRoutes = [
     { path: config.routes.watch, component: Watch },
     { path: config.routes.singlemovie, component: () => <MovieLayout title="Phim Lẻ" /> },
     { path: config.routes.seriesmovie, component: () => <MovieLayout title="Phim Bộ" /> },
-    { path: config.routes.genremovie, component: () => <MovieLayout title="Thể Loại Phim" /> },
-    { path: config.routes.countrymovie, component: () => <MovieLayout title="Quốc Gia phát hành" /> },
-    { path: config.routes.yearofrelease, component: () => <MovieLayout title="Năm Phát Hành" /> },
+    { path: config.routes.genremovie, component: MovieLayout }, // Dùng slug
+    { path: config.routes.countrymovie, component: MovieLayout }, // Dùng slug
+    { path: config.routes.yearofrelease, component: MovieLayout }, // Dùng slug
     { path: config.routes.theatermovie, component: () => <MovieLayout title="Phim Chiếu Rạp" /> },
     { path: config.routes.trailer, component: () => <MovieLayout title="Phim Sắp Chiếu" /> },
 ];
