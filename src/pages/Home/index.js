@@ -1,112 +1,61 @@
+import React from 'react';
 import classNames from 'classnames/bind';
-import MovieContainer from '~/layouts/components/MovieContainer';
-
 import styles from './Home.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Home() {
+const Home = () => {
     return (
-        <div className={cx('wrapper')}>
-            <MovieContainer
-                apis={['https://phimapi.com/v1/api/danh-sach/phim-le', 'https://phimapi.com/v1/api/danh-sach/phim-bo']}
-                sliderTitle={'PHIM ĐỀ CỬ'}
-                displayType={'slider'}
-            />
-            <MovieContainer
-                apis={['https://phimapi.com/v1/api/danh-sach/phim-le']}
-                displayType={'featured'}
-                blockTitle={'PHIM LẺ MỚI CẬP NHẬT'}
-                tags={[
-                    {
-                        title: 'Phim Hành Động',
-                        to: '/genre/phim-hanh-dong',
-                    },
-                    {
-                        title: 'Phim Hoạt Hình',
-                        to: '/genre/phim-hoat-hinh',
-                    },
-                    {
-                        title: 'Phim Kinh Di',
-                        to: '/genre/phim-kinh-di',
-                    },
-                    {
-                        title: 'Phim Hài Hước',
-                        to: '/genre/phim-hai-huoc',
-                    },
-                ]}
-            />
-            <MovieContainer
-                apis={['https://phimapi.com/v1/api/danh-sach/phim-le', 'https://phimapi.com/v1/api/danh-sach/phim-bo']}
-                blockTitle={'PHIM CHIẾU RẠP MỚI'}
-                displayType={'featured'}
-                tags={[
-                    {
-                        title: '2023',
-                        to: '/list/phim-nam-2023',
-                    },
-                    {
-                        title: '2022',
-                        to: '/list/phim-nam-2022',
-                    },
-                    {
-                        title: '2021',
-                        to: '/list/phim-nam-2021',
-                    },
-                    {
-                        title: '2020',
-                        to: '/list/phim-nam-2020',
-                    },
-                ]}
-            />
-
-            <MovieContainer
-                apis={['https://phimapi.com/v1/api/danh-sach/phim-bo']}
-                blockTitle={'PHIM BỘ MỚI CẬP NHẬT'}
-                displayType={'featured'}
-                tags={[
-                    {
-                        title: 'Hàn Quốc',
-                        to: '/country/phim-han-quoc',
-                    },
-                    {
-                        title: 'Trung Quốc',
-                        to: '/country/phim-trung-quốc',
-                    },
-                    {
-                        title: 'Âu Mỹ',
-                        to: '/country/phim-my',
-                    },
-                    {
-                        title: 'Phim Bộ Full',
-                        to: '/phim-bo',
-                    },
-                ]}
-            />
-
-            <MovieContainer
-                apis={['https://phimapi.com/v1/api/danh-sach/phim-le', 'https://phimapi.com/v1/api/danh-sach/phim-bo']}
-                displayType={'trending'}
-                blockTitle={'PHIM THỊNH HÀNH'}
-                tags={[
-                    {
-                        title: 'Phim Lẻ Thịnh Hành',
-                        to: '/phim-le',
-                    },
-                    {
-                        title: 'Phim Bộ Thịnh Hành',
-                        to: '/phim-bo',
-                    },
-                ]}
-            />
-
-            <MovieContainer
-                apis={['https://phimapi.com/v1/api/danh-sach/phim-le', 'https://phimapi.com/v1/api/danh-sach/phim-bo']}
-                displayType={'ten'}
-                blockTitle={'PHIM MỚI SẮP CHIẾU'}
-            />
+        <div className={cx('home')}>
+            {/* Search Bar */}
+            <div className={cx('searchBar')}>
+                <div className={cx('banner')}>
+                    <img src="https://via.placeholder.com/1200x200" alt="Banner" className={cx('bannerImage')} />
+                </div>
+                <div className={cx('searchContainer')}>
+                    <input type="text" className={cx('searchInput')} placeholder="Nhập từ khóa tìm kiếm" />
+                    <button className={cx('searchButton')}>Tìm kiếm</button>
+                </div>
+            </div>
+            {/* Introduction Section */}
+            <section className={cx('introduction')}>
+                <h2 className={cx('sectionTitle')}>Giới thiệu thủ tục hành chính mới</h2>
+                <div className={cx('cards')}>
+                    {Array.from({ length: 6 }).map((_, index) => (
+                        <div className={cx('card')} key={index}>
+                            <img
+                                src="https://via.placeholder.com/50"
+                                alt={`Icon ${index + 1}`}
+                                className={cx('cardIcon')}
+                            />
+                            <p className={cx('cardText')}>Thủ tục hành chính {index + 1}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+            {/* Online Services Section */}
+            <section className={cx('onlineServices')}>
+                <h2 className={cx('sectionTitle')}>Dịch vụ công trực tuyến</h2>
+                <ul className={cx('servicesList')}>
+                    <li>Đăng ký tài khoản và theo dõi tình trạng hồ sơ</li>
+                    <li>Thực hiện nộp hồ sơ trực tuyến cho các dịch vụ công</li>
+                    <li>Tra cứu hồ sơ và kết quả xử lý</li>
+                </ul>
+            </section>
+            {/* Statistics Section */}
+            <section className={cx('statistics')}>
+                <h2 className={cx('sectionTitle')}>Thống kê số lượng hồ sơ</h2>
+                <div className={cx('stats')}>
+                    {Array.from({ length: 3 }).map((_, index) => (
+                        <div className={cx('stat')} key={index}>
+                            <h3 className={cx('statTitle')}>2023</h3>
+                            <p className={cx('statText')}>Số lượng hồ sơ: {index + 1}892</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
         </div>
     );
-}
+};
 
 export default Home;
