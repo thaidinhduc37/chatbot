@@ -34,17 +34,17 @@ const Header = () => {
                 <a href="/" className={cx('nav-item')}>
                     Thủ tục hành chính
                 </a>
+                <a href="/dieu-huong" className={cx('nav-item')}>
+                    Hỗ trợ nộp hồ sơ
+                </a>
                 <a href="/tro-ly-ao" className={cx('nav-item')}>
                     Trợ lý ảo
                 </a>
                 <a href="/" className={cx('nav-item')}>
-                    Tra cứu hồ sơ
-                </a>
-                <a href="/" className={cx('nav-item')}>
                     Phản ánh - Kiến nghị
                 </a>
-                <a href="/" className={cx('nav-item')}>
-                    Đánh giá
+                <a href="/tro-ly-ao" className={cx('nav-item')}>
+                    Tra cứu hồ sơ
                 </a>
                 <a href="/" className={cx('nav-item')}>
                     Thống kê
