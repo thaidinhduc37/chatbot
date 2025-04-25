@@ -1,99 +1,170 @@
 .header {
-    background-color: #fdf1e5; /* Nhẹ hơn so với #f9e6c9 */
-    border-bottom: 3px solid #d32f2f;
-    font-family: Arial, sans-serif;
+    background: #fff;
+}
 
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 30px;
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.relative {
+    position: relative !important;
+}
+
+.content {
+    padding: 15px 0px;
+}
+
+.logo-text {
+    position: relative;
+    color: #ce7a58;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    padding-right: 20px;
+}
+
+.logo-img {
+    left: 0px;
+    width: 82px;
+    display: inline-block;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ce7a58;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #724331;
+    margin: 4px 0 0;
+}
+
+.header-account {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+}
+
+.header-account .btn {
+    margin: 0px 3px;
+    border-color: #ce7a58;
+    color: #1e2f41;
+    border-radius: 3px;
+    width: 130px;
+    min-width: 0px;
+    font-size: 18px;
+    height: auto;
+    font-weight: 500;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: #ce7a58;
+        color: #fff;
     }
+}
 
-    .logo {
-        display: flex;
-        align-items: center;
+.header-nav {
+    background: #f5f5f5;
+}
 
-        .logo-image {
-            width: 60px;
-            height: 60px;
+.nav-list {
+    font-size: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+
+    & > li {
+        float: left;
+        position: relative;
+    }
+}
+
+a{
+    text-decoration: none;
+}
+
+.nav-item {
+
+}  
+
+.nav-link {
+    display: block;
+    padding: 10px 15px;
+    font-weight: 500;
+    height: 42px;
+    position: relative;
+    color: #1e2f41;
+
+
+    &:hover {
+        background-color: #ce7a58;
+        color: #fff;
+    }
+}
+
+.dropdown {
+    &:hover {
+        .dropdown-content {
+            display: block;
         }
     }
+}
 
-    .title {
-        text-align: center;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #e28c6a;
+    min-width: 180px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    top: 100%;
+    left: 0;
+    border-radius: 4px;
+    z-index: 4;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
-        .main-title {
-            font-size: 24px; /* Lớn hơn để dễ nhìn hơn */
-            font-weight: bold;
-            color: #d32f2f;
-            margin: 0;
-        }
-
-        .sub-title {
-            font-size: 16px;
-            color: #d32f2f;
-            margin: 0;
-        }
-    }
-
-    .right {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-
-        .language-select {
-            padding: 6px 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .auth-links {
-            font-size: 14px;
-
-            a {
-                color: #333;
-                text-decoration: none;
-
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-        }
-    }
-
-    .nav {
-        display: flex;
-        justify-content: center;
-        background-color: #d32f2f;
-        padding: 10px 0;
-
-        .nav-item {
+    li {
+        a {
             color: white;
+            padding: 12px 16px;
             text-decoration: none;
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            display: block;
+            font-size: 1.8rem;
 
             &:hover {
-                background-color: #b71c1c;
-            }
-
-            &.active {
-                background-color: #9e1e1e;
-            }
-        }
-
-        .dropdown {
-            color: white;
-            padding: 10px 20px;
-            cursor: pointer;
-
-            &:hover {
-                background-color: #b71c1c;
+                background-color: #ce7a58;
             }
         }
     }

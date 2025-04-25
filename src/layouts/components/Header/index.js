@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
+import images from '~/assets/images';
 
 const cx = classNames.bind(styles);
 
@@ -8,51 +9,97 @@ const Header = () => {
     return (
         <header className={cx('header')}>
             <div className={cx('container')}>
-                <div className={cx('logo')}>
-                    <img src="https://via.placeholder.com/60x60" alt="Logo" className={cx('logo-image')} />
-                </div>
-                <div className={cx('title')}>
-                    <h1 className={cx('main-title')}>CỔNG HƯỚNG DẪN DỊCH VỤ CÔNG</h1>
-                    <h2 className={cx('sub-title')}>Kết nối, cung cấp thông tin và dịch vụ công mọi lúc, mọi nơi</h2>
-                </div>
-                <div className={cx('right')}>
-                    <select className={cx('language-select')}>
-                        <option>Tiếng Việt</option>
-                    </select>
-                    <span className={cx('auth-links')}>
-                        <a href="/login">Đăng nhập</a> | <a href="/register">Đăng ký</a>
-                    </span>
+                <div className={cx('relative', 'content')}>
+                    <div className={cx('logo-text')}>
+                        <a href="/" className={cx('logo')}>
+                            <img src={images.logo} alt="Chatbot hỗ trợ Dịch vụ công" className={cx('logo-img')} />
+                        </a>
+                        <div className={cx('text')}>
+                            <h1 className={cx('title')}>CỔNG HƯỚNG DẪN NỘP HỒ SƠ DVC</h1>
+                            <p className={cx('subtitle')}>
+                                Kết nối, cung cấp thông tin và dịch vụ công mọi lúc, mọi nơi
+                            </p>
+                        </div>
+                    </div>
+                    <div className={cx('header-account')}>
+                        <div className={cx('button')}>
+                            <a href="https://dangky.dichvucong.gov.vn/register" className={cx('btn')}>
+                                Đăng ký
+                            </a>
+                            <a
+                                href="https://xacthuc.dichvucong.gov.vn/oauth2/authorize?response_type=code&amp;client_id=Np0ahpF4exnI6DS_4KuMK_TLHLEa&amp;scope=openid&amp;redirect_uri=https://dichvucong.gov.vn/p/home/dvc-trang-chu.html"
+                                className={cx('btn')}
+                            >
+                                Đăng nhập
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <nav className={cx('nav')}>
-                <a href="/" className={cx('nav-item')}>
-                    <span className={cx('icon-home')}>🏠</span>
-                </a>
-                <a href="/" className={cx('nav-item')}>
-                    Giới thiệu
-                </a>
-                <a href="/" className={cx('nav-item')}>
-                    Thủ tục hành chính
-                </a>
-                <a href="/dieu-huong" className={cx('nav-item')}>
-                    Hỗ trợ nộp hồ sơ
-                </a>
-                <a href="/tro-ly-ao" className={cx('nav-item')}>
-                    Trợ lý ảo
-                </a>
-                <a href="/" className={cx('nav-item')}>
-                    Phản ánh - Kiến nghị
-                </a>
-                <a href="/tro-ly-ao" className={cx('nav-item')}>
-                    Tra cứu hồ sơ
-                </a>
-                <a href="/" className={cx('nav-item')}>
-                    Thống kê
-                </a>
-                <div className={cx('dropdown')}>
-                    <span>Hỗ trợ</span>
+            <div className={cx('header-nav')}>
+                <div className={cx('container')}>
+                    <ul className={cx('nav-list')}>
+                        <li className={cx('nav-item')}>
+                            <a href="/" className={cx('nav-link')}>
+                                <span role="img" aria-label="home">
+                                    🏠
+                                </span>{' '}
+                            </a>
+                        </li>
+                        <li className={cx('nav-item')}>
+                            <a href="/gioi-thieu" className={cx('nav-link')}>
+                                Giới thiệu
+                            </a>
+                        </li>
+
+                        <li className={cx('nav-item')}>
+                            <a href="/dieu-huong" className={cx('nav-link')}>
+                                Hỗ trợ nộp hồ sơ
+                            </a>
+                        </li>
+                        <li className={cx('nav-item')}>
+                            <a href="/tro-ly-ao" className={cx('nav-link')}>
+                                Trợ lý ảo
+                            </a>
+                        </li>
+                        <li className={cx('nav-item')}>
+                            <a href="/tra-cuu" className={cx('nav-link')}>
+                                Tra cứu hồ sơ
+                            </a>
+                        </li>
+                        <li className={cx('nav-item')}>
+                            <a href="/thong-ke" className={cx('nav-link')}>
+                                Thống kê
+                            </a>
+                        </li>
+                        <li className={cx('nav-item', 'dropdown')}>
+                            <span className={cx('nav-link')}>Thủ tục hành chính</span>
+                            <ul className={cx('dropdown-content')}>
+                                <li>
+                                    <a href="/huong-dan">Cấp, quản lý thẻ Căn cước</a>
+                                </li>
+                                <li>
+                                    <a href="/cau-hoi">Đăng ký, quản lý cư trú</a>
+                                </li>
+                                <li>
+                                    <a href="/cau-hoi">Đăng ký xe</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className={cx('nav-item', 'dropdown')}>
+                            <span className={cx('nav-link')}>Hỗ trợ</span>
+                            <ul className={cx('dropdown-content')}>
+                                <li>
+                                    <a href="/huong-dan">Hướng dẫn</a>
+                                </li>
+                                <li>
+                                    <a href="/cau-hoi">Câu hỏi thường gặp</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
+            </div>
         </header>
     );
 };

@@ -1,6 +1,6 @@
 const routes = {
     home: '/',
-    infor: '/infor/:slug',
+    infor: '/gioi-thieu',
     virtualassistant: '/tro-ly-ao',
     navigationpage: '/dieu-huong',
 };

@@ -1,4 +1,6 @@
+import axios from 'axios';
 const BASE_URL = process.env.REACT_APP_API_URL || '';
+
 
 export const sendMessageToBot = async (message, sessionId) => {
     const response = await fetch(`${BASE_URL}/chat`, {
@@ -19,4 +21,15 @@ export const endSession = async (sessionId) => {
     });
     if (!response.ok) throw new Error(`Lỗi máy chủ: ${response.status} ${response.statusText}`);
     return response.json();
+};
+
+
+export const getFlowByProcedure = async (procedureId) => {
+    try {
+        const res = await axios.get(`http://localhost:8000/api/flow/${procedureId}`);
+        return res.data.flow;
+    } catch (error) {
+        console.error('Lỗi khi lấy interaction flow:', error);
+        return null;
+    }
 };

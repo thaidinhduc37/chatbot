@@ -1,6 +1,8 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -8,13 +10,40 @@ const Home = () => {
     return (
         <div className={cx('home')}>
             {/* Search Bar */}
-            <div className={cx('searchBar')}>
-                <div className={cx('banner')}>
-                    <img src="https://via.placeholder.com/1200x200" alt="Banner" className={cx('bannerImage')} />
-                </div>
-                <div className={cx('searchContainer')}>
-                    <input type="text" className={cx('searchInput')} placeholder="Nhập từ khóa tìm kiếm" />
-                    <button className={cx('searchButton')}>Tìm kiếm</button>
+            <div
+                className={cx('searchBar')}
+                style={{
+                    backgroundImage: 'url(https://dichvucong.gov.vn/p/home/theme/img/home/banner.jpg)',
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                    padding: '40px 0',
+                }}
+            >
+                <div className={cx('container')}></div>
+                <div className={cx('maxw991')}>
+                    <div className={cx('form-group')}>
+                        <div className={cx('box-search')}>
+                            <input type="text" className={cx('search-input')} placeholder="Nhập từ khóa tìm kiếm" />
+                            <div className={cx('search-select')}>Tìm kiếm nâng cao</div>
+                            <button className={cx('search-button')}>
+                                <FontAwesomeIcon icon={faMagnifyingGlass} className={cx('search-icon')} />
+                            </button>
+                        </div>
+                    </div>
+                    <div className={cx('actions')}>
+                        <div className={cx('row')}>
+                            <div className={cx('col-md-4')}>
+                                <button className={cx('btn', 'btn-primary')}>Dịch vụ công trực tuyến</button>
+                            </div>
+                            <div className={cx('col-md-4')}>
+                                <button className={cx('btn', 'btn-primary')}>Chức năng hỗ trợ, điều hướng công dân thực hiện nộp hồ sơ trên Cổng dịch vụ công Quốc gia</button>
+                            </div>
+                            <div className={cx('col-md-4')}>
+                                <button className={cx('btn', 'btn-primary')}>Trợ lý ảo hướng dẫn thủ tục, cách thức thực hiện</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             {/* Introduction Section */}

@@ -6,72 +6,60 @@ const cx = classNames.bind(styles);
 
 const MiniBrowser = () => {
     const iframeRef = useRef(null);
-    const [history, setHistory] = useState(['https://dichvucong.daklak.gov.vn/vi/trangchu']);
-    const [forwardHistory, setForwardHistory] = useState([]);
-    const [currentUrl, setCurrentUrl] = useState('https://dichvucong.daklak.gov.vn/vi/trangchu');
+    const [currentUrl, setCurrentUrl] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showLoginPrompt, setShowLoginPrompt] = useState(true);
+    const [errorMessage, setErrorMessage] = useState('');
+
+    // URL mặc định
+    const loginUrl =
+        'https://xacthuc.dichvucong.gov.vn/oauth2/authorize?response_type=code&amp;client_id=Np0ahpF4exnI6DS_4KuMK_TLHLEa&amp;scope=openid&amp;redirect_uri=https://dichvucong.gov.vn/p/home/dvc-trang-chu.html';
+    const applicationUrl =
+        'https://dichvucong.bocongan.gov.vn/bocongan/bothutuc/listThuTuc?co_quan_cha=&loai_co_quan=&co_quan_con=&linh_vuc=CAP_CCCD&muc_do=&tukhoa=&doi_tuong=&cap_thuc_hien=&co_quan_cuc=&co_quan_tinh=&co_quan_huyen=&co_quan_xa='; // Giả định URL nộp hồ sơ
 
     useEffect(() => {
-        return () => {
-            setHistory([]);
-            setForwardHistory([]);
+        // Lắng nghe sự kiện thay đổi localStorage (nếu có)
+        const handleStorageChange = (event) => {
+            if (event.key === 'loginStatus' && event.newValue === 'success') {
+                setIsLoggedIn(true);
+                setCurrentUrl(applicationUrl);
+                setShowLoginPrompt(false);
+            }
         };
-    }, []);
 
-    const handleBack = () => {
-        if (history.length > 1) {
-            const newHistory = [...history];
-            const previousUrl = newHistory[newHistory.length - 2];
-            newHistory.pop();
-            setHistory(newHistory);
-            setForwardHistory((prev) => [currentUrl, ...prev]);
-            navigateTo(previousUrl);
-        } else {
-            console.warn('No history to go back');
+        window.addEventListener('storage', handleStorageChange);
+
+        // Kiểm tra trạng thái đăng nhập khi component mount
+        const loginStatus = localStorage.getItem('loginStatus');
+        if (loginStatus === 'success') {
+            setIsLoggedIn(true);
+            setCurrentUrl(applicationUrl);
+            setShowLoginPrompt(false);
         }
+
+        // Cleanup
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+            setCurrentUrl('');
+            setIsLoggedIn(false);
+            setShowLoginPrompt(true);
+        };
+    }, [applicationUrl]);
+
+    const handleLoginClick = (e) => {
+        e.preventDefault();
+        // Mở tab mới để đăng nhập
+        window.open(loginUrl, '_blank');
+        setShowLoginPrompt(false);
+        setErrorMessage('Vui lòng đăng nhập trong tab mới. Sau khi đăng nhập, nhấn nút "Đã đăng nhập" bên dưới.');
     };
 
-    const handleForward = () => {
-        if (forwardHistory.length > 0) {
-            const nextUrl = forwardHistory[0];
-            const newForwardHistory = forwardHistory.slice(1);
-            setForwardHistory(newForwardHistory);
-            setHistory((prev) => [...prev, nextUrl]);
-            navigateTo(nextUrl);
-        } else {
-            console.warn('No forward history');
-        }
-    };
-
-    const handleReload = () => {
-        try {
-            const iframeWindow = iframeRef.current?.contentWindow;
-            if (iframeWindow) {
-                iframeWindow.location.reload(); // Reload content without changing the URL
-            }
-        } catch (error) {
-            console.error('Error with Reload button:', error);
-        }
-    };
-
-    const navigateTo = (url) => {
-        try {
-            setCurrentUrl(url);
-            if (iframeRef.current) {
-                iframeRef.current.src = url;
-            }
-        } catch (error) {
-            console.error('Navigation error:', error);
-        }
-    };
-
-    const updateHistory = (newUrl) => {
-        setHistory((prevHistory) => {
-            if (prevHistory[prevHistory.length - 1] !== newUrl) {
-                return [...prevHistory, newUrl];
-            }
-            return prevHistory;
-        });
-        setForwardHistory([]); // Clear forward history when navigating to a new URL
+    const handleCheckLogin = () => {
+        // Giả lập kiểm tra đăng nhập (vì không thể truy cập trực tiếp trang đăng nhập)
+        // Trong thực tế, bạn có thể gọi API hoặc kiểm tra cookie nếu có
+        setCurrentUrl(applicationUrl);
+        setIsLoggedIn(true);
+        setErrorMessage('');
     };
 
     const handleIframeLoad = () => {
@@ -79,44 +67,45 @@ const MiniBrowser = () => {
             const iframeWindow = iframeRef.current?.contentWindow;
             if (iframeWindow) {
                 const newUrl = iframeWindow.location.href;
-                if (newUrl !== currentUrl) {
-                    setCurrentUrl(newUrl);
-                    updateHistory(newUrl);
+                // Nếu iframe chuyển hướng về trang đăng nhập, báo lỗi
+                if (newUrl.includes('dvc-trang-chu.html') && isLoggedIn) {
+                    setErrorMessage('Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.');
+                    setIsLoggedIn(false);
+                    setCurrentUrl('');
+                    setShowLoginPrompt(true);
                 }
             }
         } catch (error) {
-            console.error('Error updating history:', error);
+            console.error('Error checking iframe URL:', error);
         }
     };
 
     return (
         <div className={cx('mini-browser-wrapper')}>
-            <div className={cx('controls')}>
-                <button
-                    onClick={handleBack}
-                    className={cx('button')}
-                    disabled={history.length <= 1} // Disable if no history to go back
-                >
-                    Back
-                </button>
-                <button
-                    onClick={handleForward}
-                    className={cx('button')}
-                    disabled={forwardHistory.length === 0} // Disable if no forward history
-                >
-                    Next
-                </button>
-                <button onClick={handleReload} className={cx('button')}>
-                    Reload
-                </button>
-            </div>
-            <iframe
-                ref={iframeRef}
-                src={currentUrl}
-                onLoad={handleIframeLoad}
-                className={cx('iframe')}
-                title="Dịch vụ Công"
-            ></iframe>
+            {showLoginPrompt && (
+                <div className={cx('login-button')}>
+                    <a href={loginUrl} onClick={handleLoginClick}>
+                        Đăng nhập Dịch vụ Công
+                    </a>
+                </div>
+            )}
+            {!showLoginPrompt && !isLoggedIn && (
+                <div className={cx('login-check')}>
+                    <button onClick={handleCheckLogin} className={cx('check-login')}>
+                        Đã đăng nhập
+                    </button>
+                    {errorMessage && <p className={cx('error-message')}>{errorMessage}</p>}
+                </div>
+            )}
+            {isLoggedIn && currentUrl && (
+                <iframe
+                    ref={iframeRef}
+                    src={currentUrl}
+                    onLoad={handleIframeLoad}
+                    className={cx('iframe')}
+                    title="Dịch vụ Công"
+                ></iframe>
+            )}
         </div>
     );
 };

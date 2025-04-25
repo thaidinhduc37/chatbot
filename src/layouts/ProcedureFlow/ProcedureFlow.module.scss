@@ -1,0 +1,199 @@
+/* Bước hiện tại */
+.step {
+    padding: 20px;
+    background-color: #fff5e1; /* Nền sáng, ấm áp */
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+.step-loading {
+    padding: 20px;
+    background-color: #fff5e1; /* Nền sáng, ấm áp */
+    border-radius: 12px;
+    font-size: 18px;
+    margin-top: 20px;
+    color: #6c3f25;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+/* Wrapper chính cho từng bước */
+.procedure-step {
+    max-width: 700px;
+    margin: 24px auto;
+    padding: 24px;
+    background-color: #fff5e1;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Khi đang loading bước đầu */
+.procedure-loading {
+    padding: 24px;
+    font-size: 18px;
+    color: #6c3f25;
+    background-color: #fff5e1;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* Câu hỏi */
+.procedure-question {
+    font-size: 18px;
+    font-weight: 600;
+    color: #6c3f25;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Danh sách lựa chọn */
+.procedure-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.procedure-option-item {
+    padding: 12px 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #6c3f25;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.procedure-option-item:hover {
+    background-color: #e8d6a1;
+    transform: translateX(5px);
+}
+
+.procedure-option-item.selected {
+    background-color: #c49e5c;
+    color: white;
+}
+
+/* Nút bấm */
+.procedure-button {
+    padding: 12px 20px;
+    background-color: #8c572d;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.procedure-button:hover {
+    background-color: #6c4f2f;
+    transform: scale(1.05);
+}
+
+/* Kết thúc flow */
+.procedure-end {
+    font-style: italic;
+    color: #7c4b2d;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Footer */
+.procedure-footer {
+    margin-top: 24px;
+    text-align: left;
+}
+
+.procedure-back-button {
+    padding: 10px 15px;
+    background-color: #f4b400;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.procedure-back-button:hover {
+    background-color: #e09500;
+    transform: scale(1.05);
+}
+
+
+/* Câu hỏi */
+.question {
+    font-size: 18px;
+    font-weight: 600;
+    color: #6c3f25; /* Màu nâu đậm */
+    margin-bottom: 12px;
+}
+
+/* Danh sách các tùy chọn */
+.options li {
+    padding: 12px 18px;
+    border: 1px solid #ddd; /* Viền nhẹ nhàng */
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.3s ease;
+    color: #6c3f25; /* Màu chữ nâu sáng */
+}
+
+.options li:hover {
+    background-color: #e8d6a1; /* Màu nền khi hover */
+    transform: translateX(5px); /* Di chuyển nhẹ khi hover */
+}
+
+/* Khi chọn một tùy chọn */
+.options li.selected {
+    background-color: #c49e5c; /* Màu vàng đậm khi được chọn */
+    color: white;
+}
+
+/* Nút Tiếp tục / Đã hiểu */
+button {
+    padding: 12px 20px;
+    border: none;
+    background-color: #8c572d; /* Màu nâu đồng */
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #6c4f2f; /* Màu tối hơn khi hover */
+    transform: scale(1.05); /* Tăng nhẹ kích thước nút */
+}
+
+/* Thông điệp kết thúc */
+.end-message {
+    font-style: italic;
+    color: #7c4b2d; /* Màu nâu nhạt */
+    margin-top: 15px;
+}
+
+/* Footer (Quay lại) */
+.footer {
+    margin-top: 20px;
+}
+
+.back-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #f4b400; /* Màu vàng tươi */
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #e09500; /* Màu tối hơn khi hover */
+    transform: scale(1.05); /* Tăng nhẹ kích thước nút */
+}
