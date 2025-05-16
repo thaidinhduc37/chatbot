@@ -37,50 +37,139 @@ const Home = () => {
                                 <button className={cx('btn', 'btn-primary')}>Dịch vụ công trực tuyến</button>
                             </div>
                             <div className={cx('col-md-4')}>
-                                <button className={cx('btn', 'btn-primary')}>Chức năng hỗ trợ, điều hướng công dân thực hiện nộp hồ sơ trên Cổng dịch vụ công Quốc gia</button>
+                                <button className={cx('btn', 'btn-primary')}>
+                                    Chức năng hỗ trợ, điều hướng công dân thực hiện nộp hồ sơ trên Cổng dịch vụ công
+                                    Quốc gia
+                                </button>
                             </div>
                             <div className={cx('col-md-4')}>
-                                <button className={cx('btn', 'btn-primary')}>Trợ lý ảo hướng dẫn thủ tục, cách thức thực hiện</button>
+                                <button className={cx('btn', 'btn-primary')}>
+                                    Trợ lý ảo hướng dẫn thủ tục, cách thức thực hiện
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             {/* Introduction Section */}
             <section className={cx('introduction')}>
-                <h2 className={cx('sectionTitle')}>Giới thiệu thủ tục hành chính mới</h2>
-                <div className={cx('cards')}>
-                    {Array.from({ length: 6 }).map((_, index) => (
-                        <div className={cx('card')} key={index}>
-                            <img
-                                src="https://via.placeholder.com/50"
-                                alt={`Icon ${index + 1}`}
-                                className={cx('cardIcon')}
-                            />
-                            <p className={cx('cardText')}>Thủ tục hành chính {index + 1}</p>
+                <div className={cx('container')}>
+                    <div className={cx('targetgroup-area')}>
+                        <div className={cx('targetgroup')}>
+                            <h2 className={cx('targetgroup-title')}>CÔNG DÂN</h2>
+                            <div className={cx('targetgroup-content')}>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-baby')}></i>
+                                    <span>Có con nhỏ</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-education')}></i>
+                                    <span>Học tập</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-job')}></i>
+                                    <span>Việc làm</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-id')}></i>
+                                    <span>Cư trú và giấy tờ tùy thân</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-family')}></i>
+                                    <span>Hôn nhân và gia đình</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-house')}></i>
+                                    <span>Điện lực, nhà ở, đất đai</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-health')}></i>
+                                    <span>Sức khỏe và y tế</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-vehicle')}></i>
+                                    <span>Phương tiện và người lái</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-retirement')}></i>
+                                    <span>Hưu trí</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-death')}></i>
+                                    <span>Người thân qua đời</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-complaint')}></i>
+                                    <span>Giải quyết khiếu kiện</span>
+                                </div>
+                            </div>
                         </div>
-                    ))}
+                        <div className={cx('targetgroup')}>
+                            <h2 className={cx('targetgroup-title')}>DOANH NGHIỆP</h2>
+                            <div className={cx('targetgroup-content')}>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-startup')}></i>
+                                    <span>Khởi sự kinh doanh</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-insurance')}></i>
+                                    <span>Lao động và bảo hiểm xã hội</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-finance')}></i>
+                                    <span>Tài chính doanh nghiệp</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-construction')}></i>
+                                    <span>Điện lực, đất đai, xây dựng</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-trade')}></i>
+                                    <span>Thương mại, quảng cáo</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-intellectual')}></i>
+                                    <span>Sở hữu trí tuệ, đăng ký tài sản</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-branch')}></i>
+                                    <span>Thành lập chi nhánh, văn phòng đại diện</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-tender')}></i>
+                                    <span>Đấu thầu, mua sắm công</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-restructure')}></i>
+                                    <span>Tái cấu trúc doanh nghiệp</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-dispute')}></i>
+                                    <span>Giải quyết tranh chấp hợp đồng</span>
+                                </div>
+                                <div className={cx('service-item')}>
+                                    <i className={cx('icon-stop')}></i>
+                                    <span>Tạm dừng, chấm dứt hoạt động</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
+
             {/* Online Services Section */}
             <section className={cx('onlineServices')}>
-                <h2 className={cx('sectionTitle')}>Dịch vụ công trực tuyến</h2>
-                <ul className={cx('servicesList')}>
-                    <li>Đăng ký tài khoản và theo dõi tình trạng hồ sơ</li>
-                    <li>Thực hiện nộp hồ sơ trực tuyến cho các dịch vụ công</li>
-                    <li>Tra cứu hồ sơ và kết quả xử lý</li>
-                </ul>
-            </section>
-            {/* Statistics Section */}
-            <section className={cx('statistics')}>
-                <h2 className={cx('sectionTitle')}>Thống kê số lượng hồ sơ</h2>
-                <div className={cx('stats')}>
-                    {Array.from({ length: 3 }).map((_, index) => (
-                        <div className={cx('stat')} key={index}>
-                            <h3 className={cx('statTitle')}>2023</h3>
-                            <p className={cx('statText')}>Số lượng hồ sơ: {index + 1}892</p>
+                <div className={cx('container')}>
+                    <h2 className={cx('sectionTitle')}>Dịch vụ công liên thông</h2>
+                    <div className={cx('serviceGrid')}>
+                        <div className={cx('serviceCard', 'highlight')}>
+                            <h3 className={cx('serviceTitle')}>Khai sinh, Khai tử</h3>
+                            <p className={cx('serviceDescription')}>
+                                Thực hiện thủ tục đăng ký khai sinh, khai tử trực tuyến
+                            </p>
                         </div>
-                    ))}
+                    </div>
                 </div>
             </section>
         </div>

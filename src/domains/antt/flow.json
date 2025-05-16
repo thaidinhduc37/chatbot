@@ -1,0 +1,53 @@
+{
+    "questions": [
+        {
+            "id": "registration_type",
+            "question": "Bạn muốn thực hiện thủ tục gì?",
+            "options": [
+                {
+                    "label": "Cấp mới giấy chứng nhận ANTT",
+                    "flow": "cap_moi"
+                },
+                {
+                    "label": "Cấp lại giấy chứng nhận ANTT",
+                    "flow": "cap_lai"
+                },
+                {
+                    "label": "Điều chỉnh giấy chứng nhận ANTT",
+                    "flow": "dieu_chinh"
+                }
+            ]
+        }
+    ],
+    "flows": {
+        "cap_moi": {
+            "name": "Cấp mới giấy chứng nhận ANTT",
+            "steps": ["1", "2.1", "3", "4", "5", "6", "7", "8"]
+        },
+        "cap_lai": {
+            "name": "Cấp lại giấy chứng nhận ANTT",
+            "steps": ["1", "2.2", "3", "4", "5", "6", "7", "8"]
+        },
+        "dieu_chinh": {
+            "name": "Điều chỉnh giấy chứng nhận ANTT",
+            "steps": ["1", "2.3", "3", "4", "5", "6", "7", "8"]
+        }
+    },
+    "steps": {
+        "1": "Đăng nhập vào Cổng dịch vụ công Bộ Công an",
+        "2": {
+            "name": "Chọn thủ tục",
+            "substeps": {
+                "2.1": "Cấp giấy chứng nhận đủ điều kiện về an ninh, trật tự (thực hiện tại Công an cấp tỉnh)",
+                "2.2": "Cấp lại giấy chứng nhận đủ điều kiện về an ninh, trật tự (thực hiện tại Công an cấp tỉnh)",
+                "2.3": "Điều chỉnh giấy chứng nhận đủ điều kiện về an ninh, trật tự (thực hiện tại Công an cấp tỉnh)"
+            }
+        },
+        "3": "Bấm vào 'Nộp hồ sơ'",
+        "4": "Khai báo thông tin cơ sở kinh doanh",
+        "5": "Tải lên các giấy tờ cần thiết",
+        "6": "Kiểm tra và xác nhận thông tin",
+        "7": "Chọn nơi nộp hồ sơ",
+        "8": "Chọn ngày hẹn và nộp hồ sơ"
+    }
+}

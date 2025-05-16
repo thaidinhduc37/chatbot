@@ -1,0 +1,80 @@
+{
+    "questions": [
+        {
+            "id": "registration_type",
+            "question": "Bạn muốn thực hiện thủ tục gì?",
+            "options": [
+                {
+                    "label": "Đăng ký kết hôn",
+                    "flow": "ket_hon"
+                },
+                {
+                    "label": "Đăng ký khai sinh",
+                    "flow": "khai_sinh"
+                },
+                {
+                    "label": "Đăng ký khai tử",
+                    "flow": "khai_tu"
+                },
+                {
+                    "label": "Xác nhận tình trạng hôn nhân",
+                    "flow": "xac_nhan_hon_nhan"
+                },
+                {
+                    "label": "Cấp bản sao trích lục hộ tịch",
+                    "flow": "ban_sao_ho_tich"
+                },
+                {
+                    "label": "Thay đổi, cải chính hộ tịch",
+                    "flow": "thay_doi_ho_tich"
+                }
+            ]
+        }
+    ],
+    "flows": {
+        "ket_hon": {
+            "name": "Đăng ký kết hôn",
+            "steps": ["1", "2.1", "3", "4", "5", "6", "7", "8"]
+        },
+        "khai_sinh": {
+            "name": "Đăng ký khai sinh",
+            "steps": ["1", "2.2", "3", "4", "5", "6", "7", "8"]
+        },
+        "khai_tu": {
+            "name": "Đăng ký khai tử",
+            "steps": ["1", "2.3", "3", "4", "5", "6", "7", "8"]
+        },
+        "xac_nhan_hon_nhan": {
+            "name": "Xác nhận tình trạng hôn nhân",
+            "steps": ["1", "2.4", "3", "4", "5", "6", "7", "8"]
+        },
+        "ban_sao_ho_tich": {
+            "name": "Cấp bản sao trích lục hộ tịch",
+            "steps": ["1", "2.5", "3", "4", "5", "6", "7", "8"]
+        },
+        "thay_doi_ho_tich": {
+            "name": "Thay đổi, cải chính hộ tịch",
+            "steps": ["1", "2.6", "3", "4", "5", "6", "7", "8"]
+        }
+    },
+    "steps": {
+        "1": "Đăng nhập vào Cổng dịch vụ công Bộ Tư pháp",
+        "2": {
+            "name": "Chọn thủ tục",
+            "substeps": {
+                "2.1": "Đăng ký kết hôn (thực hiện tại UBND cấp xã)",
+                "2.2": "Đăng ký khai sinh (thực hiện tại UBND cấp xã)",
+                "2.3": "Đăng ký khai tử (thực hiện tại UBND cấp xã)",
+                "2.4": "Xác nhận tình trạng hôn nhân (thực hiện tại UBND cấp xã)",
+                "2.5": "Cấp bản sao trích lục hộ tịch (thực hiện tại UBND cấp xã)",
+                "2.6": "Thay đổi, cải chính hộ tịch (thực hiện tại UBND cấp xã)"
+            }
+        },
+        "3": "Bấm vào 'Nộp hồ sơ'",
+        "4": "Khai báo thông tin cá nhân",
+        "5": "Tải lên các giấy tờ cần thiết",
+        "6": "Kiểm tra và xác nhận thông tin",
+        "7": "Chọn nơi nộp hồ sơ",
+        "8": "Chọn ngày hẹn và nộp hồ sơ"
+    }
+}

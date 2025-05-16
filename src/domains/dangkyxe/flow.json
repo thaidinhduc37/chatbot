@@ -1,0 +1,53 @@
+{
+    "questions": [
+        {
+            "id": "registration_type",
+            "question": "Bạn muốn thực hiện thủ tục gì?",
+            "options": [
+                {
+                    "label": "Đăng ký xe mới",
+                    "flow": "dang_ky_moi"
+                },
+                {
+                    "label": "Cấp lại đăng ký xe",
+                    "flow": "cap_lai"
+                },
+                {
+                    "label": "Đổi đăng ký xe",
+                    "flow": "doi_dang_ky"
+                }
+            ]
+        }
+    ],
+    "flows": {
+        "dang_ky_moi": {
+            "name": "Đăng ký xe mới",
+            "steps": ["1", "2.1", "3", "4", "5", "6", "7", "8"]
+        },
+        "cap_lai": {
+            "name": "Cấp lại đăng ký xe",
+            "steps": ["1", "2.2", "3", "4", "5", "6", "7", "8"]
+        },
+        "doi_dang_ky": {
+            "name": "Đổi đăng ký xe",
+            "steps": ["1", "2.3", "3", "4", "5", "6", "7", "8"]
+        }
+    },
+    "steps": {
+        "1": "Đăng nhập vào Cổng dịch vụ công Bộ Giao thông vận tải",
+        "2": {
+            "name": "Chọn thủ tục",
+            "substeps": {
+                "2.1": "Đăng ký xe mới (thực hiện tại Sở GTVT)",
+                "2.2": "Cấp lại đăng ký xe (thực hiện tại Sở GTVT)",
+                "2.3": "Đổi đăng ký xe (thực hiện tại Sở GTVT)"
+            }
+        },
+        "3": "Bấm vào 'Nộp hồ sơ'",
+        "4": "Khai báo thông tin xe",
+        "5": "Tải lên các giấy tờ cần thiết",
+        "6": "Kiểm tra và xác nhận thông tin",
+        "7": "Chọn nơi nộp hồ sơ",
+        "8": "Chọn ngày hẹn và nộp hồ sơ"
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "questions": [
+        {
+            "id": "registration_type",
+            "question": "Bạn muốn đăng ký loại cư trú nào?",
+            "options": [
+                {
+                    "label": "Đăng ký thường trú",
+                    "flow": "thuong_tru"
+                },
+                {
+                    "label": "Đăng ký tạm trú",
+                    "flow": "tam_tru"
+                }
+            ]
+        }
+    ],
+    "flows": {
+        "thuong_tru": {
+            "name": "Đăng ký thường trú",
+            "steps": ["1.1", "2.1", "3", "4", "5", "6", "7", "8"]
+        },
+        "tam_tru": {
+            "name": "Đăng ký tạm trú",
+            "steps": ["1.2", "2.2", "3", "4", "5", "6", "7", "8"]
+        }
+    },
+    "steps": {
+        "1": {
+            "name": "Đăng nhập vào Cổng dịch vụ công Bộ Công an",
+            "substeps": {
+                "1.1": "Đăng nhập bằng tài khoản VneID cá nhân hoặc tài khoản CCCD",
+                "1.2": "Đăng nhập bằng tài khoản VneID hoặc tài khoản CCCD của chủ hộ"
+            }
+        },
+        "2": {
+            "name": "Chọn thủ tục",
+            "substeps": {
+                "2.1": "Đăng ký thường trú (thực hiện tại cấp huyện)",
+                "2.2": "Đăng ký tạm trú (thực hiện tại cấp xã)"
+            }
+        },
+        "3": "Bấm vào 'Nộp hồ sơ'",
+        "4": "Kiểm tra thông tin người kê khai",
+        "5": "Tải lên các giấy tờ cần thiết theo yêu cầu",
+        "6": "Kiểm tra và xác nhận thông tin",
+        "7": "Chọn nơi nộp hồ sơ",
+        "8": "Chọn ngày hẹn và nộp hồ sơ"
+    }
+}

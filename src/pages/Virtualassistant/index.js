@@ -28,7 +28,6 @@ const Virtualassistant = () => {
         try {
             const data = await sendMessageToBot(content, sessionId);
             if (data.response) {
-               
                 setResponses((prev) => [...prev, { sender: 'bot', text: data.response, isHTML: true }]);
                 if (data.session_id) setSessionId(data.session_id);
             } else {

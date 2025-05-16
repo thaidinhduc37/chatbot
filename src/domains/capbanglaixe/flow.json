@@ -1,0 +1,53 @@
+{
+    "questions": [
+        {
+            "id": "registration_type",
+            "question": "Bạn muốn thực hiện thủ tục gì?",
+            "options": [
+                {
+                    "label": "Cấp mới bằng lái xe",
+                    "flow": "cap_moi"
+                },
+                {
+                    "label": "Cấp lại bằng lái xe",
+                    "flow": "cap_lai"
+                },
+                {
+                    "label": "Đổi bằng lái xe",
+                    "flow": "doi_bang"
+                }
+            ]
+        }
+    ],
+    "flows": {
+        "cap_moi": {
+            "name": "Cấp mới bằng lái xe",
+            "steps": ["1", "2.1", "3", "4", "5", "6", "7", "8"]
+        },
+        "cap_lai": {
+            "name": "Cấp lại bằng lái xe",
+            "steps": ["1", "2.2", "3", "4", "5", "6", "7", "8"]
+        },
+        "doi_bang": {
+            "name": "Đổi bằng lái xe",
+            "steps": ["1", "2.3", "3", "4", "5", "6", "7", "8"]
+        }
+    },
+    "steps": {
+        "1": "Đăng nhập vào Cổng dịch vụ công Bộ Giao thông vận tải",
+        "2": {
+            "name": "Chọn thủ tục",
+            "substeps": {
+                "2.1": "Cấp mới bằng lái xe (thực hiện tại Sở GTVT)",
+                "2.2": "Cấp lại bằng lái xe (thực hiện tại Sở GTVT)",
+                "2.3": "Đổi bằng lái xe (thực hiện tại Sở GTVT)"
+            }
+        },
+        "3": "Bấm vào 'Nộp hồ sơ'",
+        "4": "Khai báo thông tin cá nhân",
+        "5": "Tải lên các giấy tờ cần thiết",
+        "6": "Kiểm tra và xác nhận thông tin",
+        "7": "Chọn nơi nộp hồ sơ",
+        "8": "Chọn ngày hẹn và nộp hồ sơ"
+    }
+}

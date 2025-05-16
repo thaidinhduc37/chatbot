@@ -1,60 +1,102 @@
 .footer {
-    background-color: #f9e6c9;
-    font-family: Arial, sans-serif;
+    background: #f8f9fa;
     color: #333;
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    border-top: 1px solid #e9ecef;
 
     .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 28px 15px 14px 15px;
         text-align: center;
-        padding: 20px 10px;
-        border-bottom: 2px solid #d32f2f;
 
         .title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #d32f2f;
-            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #0d6efd;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
         }
-
         .address,
-        .email {
-            font-size: 14px;
-            margin: 5px 0;
+        .email,
+        .support {
+            font-size: 15px;
+            margin: 6px 0;
+            color: #333;
+            line-height: 1.7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
         }
-
+        .address svg,
+        .email svg,
+        .support svg {
+            color: #0d6efd;
+            flex-shrink: 0;
+        }
         .email a {
             color: #333;
-            text-decoration: none;
-            font-weight: bold;
-
+            text-decoration: underline;
+            transition: color 0.2s;
             &:hover {
-                text-decoration: underline;
+                color: #0d6efd;
             }
         }
-
         .support {
-            font-size: 14px;
-            color: #d32f2f;
-            font-weight: bold;
+            color: #0d6efd;
+            font-weight: 500;
             margin-top: 10px;
         }
     }
 
     .bottom {
+        border-top: 1px solid #e9ecef;
+        background: #f4f6fb;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 10px 20px;
-        background-color: #d32f2f;
-        color: white;
-        font-size: 12px;
-
+        padding: 12px 15px;
+        max-width: 1200px;
+        margin: 0 auto;
+        font-size: 14px;
+        color: #666;
+        flex-wrap: wrap;
+        gap: 10px;
         p {
             margin: 0;
             line-height: 1.5;
         }
-
         .logo img {
-            height: 50px;
+            height: 36px;
+            width: auto;
+            filter: none;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .footer {
+        .content {
+            padding: 18px 6px 8px 6px;
+            .title {
+                font-size: 17px;
+            }
+            .address,
+            .email,
+            .support {
+                font-size: 13px;
+            }
+        }
+        .bottom {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 8px 6px;
+            .logo {
+                margin-top: 6px;
+            }
         }
     }
 }
